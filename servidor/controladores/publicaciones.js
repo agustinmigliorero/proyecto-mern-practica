@@ -18,10 +18,17 @@ async function verPublicacion(req, res) {
   res.json(publicacion);
 }
 
+async function eliminarPublicacion(req, res) {
+  const { id } = req.params;
+  const publicacion = await Publicacion.findByIdAndDelete(id);
+  res.json({ publicacion, mensaje: "Publicacion Eliminada" });
+}
+
 module.exports = {
   crearPublicacion,
   verPublicaciones,
   verPublicacion,
+  eliminarPublicacion,
 };
 
 /*
