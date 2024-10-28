@@ -12,9 +12,16 @@ async function verPublicaciones(req, res) {
   res.json(publicaciones);
 }
 
+async function verPublicacion(req, res) {
+  const { id } = req.params;
+  const publicacion = await Publicacion.findById(id);
+  res.json(publicacion);
+}
+
 module.exports = {
   crearPublicacion,
   verPublicaciones,
+  verPublicacion,
 };
 
 /*
