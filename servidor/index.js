@@ -17,10 +17,9 @@ mongoose
 
 // app.use("/", rutas);
 app.use(express.static(path.join(__dirname, "public")));
-const htmlPath = path.join(__dirname, "public", "index.html");
 
 app.get("/", (req, res) => {
-  res.sendFile(htmlPath);
+  res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
 app.use("/publicaciones", rutasPublicaciones);
