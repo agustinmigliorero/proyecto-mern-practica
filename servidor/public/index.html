@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <h1 style="text-align: center; font-size: 36px; font-family: sans-serif">
+      Publicaciones!
+    </h1>
+    <div id="contenedor-publicaciones"></div>
+  </body>
+
+  <script>
+    const div = document.getElementById("contenedor-publicaciones");
+
+    async function mostrarPublicaciones() {
+      div.innerHTML = "";
+      const res = await fetch("http://localhost:3000/publicaciones");
+      const publicaciones = await res.json();
+      for (let i = 0; i < publicaciones.length; i++) {
+        const publicacion = publicaciones[i];
+        div.innerHTML += `<div>
+                <h2>${publicacion.titulo}</h2>
+                <h3>${publicacion.subtitulo}</h3>
+                <p>${publicacion.contenido}</p>
+            </div>`;
+      }
+    }
+
+    mostrarPublicaciones();
+  </script>
+</html>
