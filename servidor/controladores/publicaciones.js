@@ -24,11 +24,23 @@ async function eliminarPublicacion(req, res) {
   res.json({ publicacion, mensaje: "Publicacion Eliminada" });
 }
 
+async function editarPublicacion(req, res) {
+  const { id } = req.params;
+  const { contenido, subtitulo, titulo } = req.body;
+  const publicacion = await Publicacion.findByIdAndUpdate(id, {
+    contenido,
+    subtitulo,
+    titulo,
+  });
+  res.json(publicacion);
+}
+
 module.exports = {
   crearPublicacion,
   verPublicaciones,
   verPublicacion,
   eliminarPublicacion,
+  editarPublicacion,
 };
 
 /*
