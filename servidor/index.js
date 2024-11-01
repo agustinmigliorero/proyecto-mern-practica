@@ -22,7 +22,11 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
-app.use("/publicaciones", rutasPublicaciones);
+app.get("/publicaciones/crear", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "crearPublicacion.html"));
+});
+
+app.use("/api/publicaciones", rutasPublicaciones);
 
 app.listen(puerto, function () {
   console.log("Servidor corriendo en http://localhost:" + puerto);

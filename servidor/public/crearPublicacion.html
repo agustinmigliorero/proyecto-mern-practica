@@ -19,15 +19,41 @@
   </head>
   <body>
     <h1>Formulario</h1>
-    <form>
+    <form id="form-publicacion">
       <input type="text" placeholder="Titulo" id="input-titulo" />
       <br />
       <input type="text" placeholder="Subtitulo" id="input-subtitulo" />
       <br />
       <input type="text" placeholder="Contenido" id="input-contenido" />
-      <button>Enviar</button>
+      <button type="submit">Enviar</button>
     </form>
   </body>
 
-  <script></script>
+  <script>
+    const formPublicacion = document.querySelector("#form-publicacion");
+    const inputTitulo = document.querySelector("#input-titulo");
+    const inputSubtitulo = document.querySelector("#input-subtitulo");
+    const inputContenido = document.querySelector("#input-contenido");
+
+    formPublicacion.addEventListener("submit", (evento) => {
+      evento.preventDefault();
+      const publicacion = {
+        titulo: inputTitulo.value,
+        subtitulo: inputSubtitulo.value,
+        contenido: inputContenido.value,
+      };
+      console.log(publicacion);
+      fetch("http://localhost:3000/api/publicaciones", {
+        method: "POST",
+        body: JSON.stringify(publicacion),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }).then((res) => {
+        if (res.ok) {
+          location.replace("http://localhost:3000/");
+        }
+      });
+    });
+  </script>
 </html>

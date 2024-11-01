@@ -21,7 +21,9 @@
 
     async function mostrarPublicaciones() {
       div.innerHTML = "";
-      const publicaciones = await fetch("http://localhost:3000/publicaciones");
+      const publicaciones = await fetch(
+        "http://localhost:3000/api/publicaciones"
+      );
       const publicacionesJSON = await publicaciones.json();
       for (let i = 0; i < publicacionesJSON.length; i++) {
         const { titulo, subtitulo, contenido } = publicacionesJSON[i];
