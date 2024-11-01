@@ -32,8 +32,31 @@
             <h2>${titulo}</h2>
             <h3>${subtitulo}</h3>
             <p>${contenido}</p>
+            <button class="boton-eliminar" id="${publicacionesJSON[i]._id}">Eliminar</button>
+            <hr />
             </div>`;
       }
+      eventosEliminar();
+    }
+
+    function eventosEliminar() {
+      const botonesEliminar = document.querySelectorAll(".boton-eliminar");
+      for (let i = 0; i < botonesEliminar.length; i++) {
+        botonesEliminar[i].addEventListener("click", () => {
+          eliminarPublicacion(botonesEliminar[i].id);
+          console.log("AAAAAAAAAA");
+        });
+      }
+    }
+
+    function eliminarPublicacion(id) {
+      fetch(`http://localhost:3000/api/publicaciones/${id}`, {
+        method: "DELETE",
+      }).then((res) => {
+        if (res.ok) {
+          mostrarPublicaciones();
+        }
+      });
     }
 
     mostrarPublicaciones();
