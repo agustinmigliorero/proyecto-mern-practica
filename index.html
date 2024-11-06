@@ -12,6 +12,7 @@
   <body>
     <h1>Hola!</h1>
     <button class="btn btn-primary" id="btn-activar">Activar modal!</button>
+    <textarea rows="10" cols="100" name="" id=""></textarea>
 
     <div class="modalmio escondido">
       <h1>Titulo del modal</h1>
@@ -27,7 +28,7 @@
 
       btnActivar.addEventListener("click", () => {
         modal.classList.remove("escondido");
-        document.body.style.backgroundColor = "rgb(50, 50, 50)";
+        document.body.style.backgroundColor = "rgba(50, 50, 50, 0.5)";
       });
 
       btnEsconder.addEventListener("click", () => {
